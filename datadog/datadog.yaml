@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: datadog-agent
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      name: datadog-agent
+  template:
+    metadata:
+      labels:
+        name: datadog-agent
+    spec:
+      containers:
+      - name: datadog-agent
+        image: "gcr.io/datadoghq/agent:latest"
+        env:
+        - name: DD_API_KEY
+          value: "1531abdfbc8efb55697bd2c3d11bd3af"
+        - name: DD_SITE
+          value: "datadoghq.eu"
+        volumeMounts:
+        - name: dockersock
+          mountPath: /var/run/docker.sock
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
