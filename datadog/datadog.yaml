@@ -17,7 +17,7 @@ spec:
         image: "gcr.io/datadoghq/agent:latest"
         env:
         - name: DD_API_KEY
-          value: "1531abdfbc8efb55697bd2c3d11bd3af"
+          value: "************************"
         - name: DD_SITE
           value: "datadoghq.eu"
         volumeMounts:
